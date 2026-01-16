@@ -1,1 +1,187 @@
-<!DOCTYPE html><html lang='fr'><head><meta charset='UTF-8'><title>LB-K SMART 2026</title></head><body><h1>LB-K SMART 2026</h1></body></html>
+<!DOCTYPE html>
+<html lang="fr" data-theme="futuriste" data-mode="desktop">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LB-K SMART 2026 | Boutique Intelligence</title>
+    
+    <!-- META PWA -->
+    <meta name="theme-color" content="#0a0a1a">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="images/icons/favicon.ico">
+    
+    <!-- STYLES -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    
+    <!-- FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 🔝 BARRE PUB DYNAMIQUE -->
+    <div class="ad-bar" id="adBar">
+        <div class="ad-content">
+            <span class="ad-badge">🔥 STOCK IMMÉDIAT</span>
+            <div class="ad-scroll" id="adScroll">
+                <!-- Produits en stock chargés dynamiquement -->
+            </div>
+        </div>
+        <div class="ad-controls">
+            <button class="ad-btn" id="adPlay">▶️</button>
+            <button class="ad-btn" id="adClose">✕</button>
+        </div>
+    </div>
+
+    <!-- 🏢 BUREAU RACINE INTELLIGENT -->
+    <div class="desktop-root">
+        <!-- 📦 SECTION CATALOGUE (30%) -->
+        <div class="section-catalogue" id="catalogueSection">
+            <div class="section-header">
+                <h2>📦 CATALOGUE EN LIGNE</h2>
+                <p>Commande : 15-21 jours 🟡</p>
+            </div>
+            <div class="products-grid" id="catalogueProducts">
+                <!-- Produits chargés depuis JSON -->
+            </div>
+        </div>
+
+        <!-- 🎯 SÉPARATEUR REDIMENSIONNABLE -->
+        <div class="resize-handle" id="resizeHandle"></div>
+
+        <!-- 🏪 SECTION STOCK (70%) -->
+        <div class="section-stock" id="stockSection">
+            <div class="section-header">
+                <h2>🏪 STOCK DISPONIBLE</h2>
+                <p>Livraison immédiate 🟢</p>
+            </div>
+            <div class="products-grid" id="stockProducts">
+                <!-- Produits en stock -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 🛒 PANIER INTELLIGENT IA -->
+    <div class="smart-cart" id="smartCart">
+        <div class="cart-header">
+            <h3>🛒 VOTRE COMMANDE</h3>
+            <div class="cart-ai">
+                <span class="ai-badge">🤖 IA ACTIVE</span>
+                <button class="ai-btn" onclick="openAIAssistant()">💡 Suggestions</button>
+            </div>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Items avec variantes -->
+        </div>
+        
+        <div class="cart-logistics">
+            <div class="logistics-option">
+                <label>
+                    <input type="radio" name="delivery" value="air_express" checked>
+                    ✈️ Aérien Express (15 jours) +25,000 FC
+                </label>
+            </div>
+            <div class="logistics-option">
+                <label>
+                    <input type="radio" name="delivery" value="air_normal">
+                    ✈️ Aérien Normal (21 jours) +18,000 FC
+                </label>
+            </div>
+            <div class="logistics-option">
+                <label>
+                    <input type="radio" name="delivery" value="maritime">
+                    ⛵ Maritime (30-45 jours) <span id="maritimeCost"></span>
+                </label>
+            </div>
+        </div>
+        
+        <div class="cart-total">
+            <div class="total-line">
+                <span>Sous-total :</span>
+                <span id="subtotal">0</span> FC
+            </div>
+            <div class="total-line">
+                <span>Livraison :</span>
+                <span id="deliveryCost">0</span> FC
+            </div>
+            <div class="total-line grand-total">
+                <strong>TOTAL :</strong>
+                <strong id="grandTotal">0</strong> FC
+            </div>
+        </div>
+        
+        <button class="whatsapp-send" onclick="processWhatsAppOrder()">
+            💬 ENVOYER SUR WHATSAPP
+        </button>
+    </div>
+
+    <!-- ⚙️ MINI ADMIN MOBILE -->
+    <div class="mobile-admin" id="mobileAdmin">
+        <div class="admin-header">
+            <h4>🔐 ADMIN LB-K SMART</h4>
+            <input type="password" id="adminPassword" placeholder="Mot de passe">
+            <button onclick="unlockAdmin()">Déverrouiller</button>
+        </div>
+        
+        <div class="admin-actions" id="adminActions" style="display:none;">
+            <button onclick="openProductAdd()">➕ Ajouter produit</button>
+            <button onclick="openStockManager()">📊 Gérer stock</button>
+            <button onclick="openThemeControl()">🎨 Changer thème</button>
+            <button onclick="openAdControl()">📢 Contrôle pub</button>
+            <button onclick="openTerminal()">💻 Terminal Code</button>
+        </div>
+    </div>
+
+    <!-- 🤖 ASSISTANT IA -->
+    <div class="ai-assistant" id="aiAssistant">
+        <div class="ai-header">
+            <h4>🤖 ASSISTANT SHOPPING</h4>
+            <button onclick="closeAIAssistant()">✕</button>
+        </div>
+        <div class="ai-recommendations" id="aiRecommendations">
+            <!-- Recommandations IA -->
+        </div>
+    </div>
+
+    <!-- 📱 BOUTONS FLOTTANTS -->
+    <div class="floating-buttons">
+        <button class="float-btn whatsapp-float" onclick="quickWhatsApp()">
+            💬
+            <span class="float-label">WhatsApp Direct</span>
+        </button>
+        <button class="float-btn cart-float" onclick="toggleCart()">
+            🛒
+            <span class="float-label">Panier</span>
+            <span class="float-badge" id="cartBadge">0</span>
+        </button>
+        <button class="float-btn ai-float" onclick="openAIAssistant()">
+            🤖
+            <span class="float-label">Assistant IA</span>
+        </button>
+        <button class="float-btn admin-float" onclick="toggleAdmin()">
+            🔐
+            <span class="float-label">Admin</span>
+        </button>
+        <button class="float-btn theme-float" onclick="switchTheme()">
+            🎨
+            <span class="float-label">Thème</span>
+        </button>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="scripts/app-core.js"></script>
+    <script src="scripts/dual-mode.js"></script>
+    <script src="scripts/cart-engine.js"></script>
+    <script src="scripts/whatsapp-automation.js"></script>
+    <script src="scripts/admin-panel.js"></script>
+    <script src="scripts/ai-assistant.js"></script>
+    <script src="scripts/logistics-calculator.js"></script>
+    
+    <!-- Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</body>
+</html>
