@@ -1,7 +1,0 @@
-git init
-git add .
-git commit -m "Initial commit: LB-K SMART 2026"
-git branch -M main
-# Replace `YOUR_USERNAME` with your actual GitHub username
-git remote add origin https://github.com/YOUR_USERNAME/lbk-smart.git
-git push -u origin main
