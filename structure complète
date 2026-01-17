@@ -1,0 +1,13 @@
+lbk-smart-2026.zip
+├── 📄 index.html (interface principale complète)
+├── 🎨 styles/ (3 fichiers CSS optimisés)
+├── ⚙️ scripts/ (9 fichiers JavaScript fonctionnels)
+├── 🔌 service-worker.js (PWA prêt)
+├── 📱 manifest.json (configuration PWA)
+├── 🔧 .htaccess (configuration serveur)
+├── 📊 data/ (4 fichiers JSON de configuration)
+├── 🖼️ images/ (structure dossiers + placeholders)
+├── 📁 admin/ (dashboard + terminal)
+├── 🚀 deploy.sh (script déploiement automatisé)
+├── 📋 CHECKLIST-DEPLOIEMENT.md (checklist détaillée)
+└── 📖 README.md (documentation complète)
