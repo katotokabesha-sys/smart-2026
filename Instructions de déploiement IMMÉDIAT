@@ -1,0 +1,10 @@
+**Téléchargez** le fichier `lbk-smart-2026.zip`
+2. **Dézippez** dans un dossier de votre choix
+3. **Modifiez** les fichiers critiques :
+   - `scripts/whatsapp-automation.js` : Numéros WhatsApp
+   - `scripts/admin-panel.js` : Mot de passe admin
+   - `data/products-database.json` : Vos produits
+4. **Exécutez** le déploiement :
+   ```bash
+   chmod +x deploy.sh
+   ./deploy.sh
